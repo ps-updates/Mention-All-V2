@@ -40,10 +40,14 @@ async def everyone(client, message):
           await message.reply("🚫 | There's already an ongoing process in this chat. Please /stop to start a new one.")
         else:  
           chatQueue.append(message.chat.id)
-          if len(message.command) > 1:
+        if len(message.command) > 1:
+            inputText = ' '.join(message.command[1:])
+        else:
+            inputText = ""
+         """ if len(message.command) > 1:
             inputText = message.command[1]
           elif len(message.command) == 1:
-            inputText = ""    
+            inputText = "" """   
           membersList = []
           async for member in teletips.get_chat_members(message.chat.id):
             if member.user.is_bot == True:
