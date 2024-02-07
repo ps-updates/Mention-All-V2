@@ -1,1 +1,1 @@
-worker: python3 pingallbot.py
+worker: python3 bot.py
