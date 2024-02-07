@@ -13,6 +13,8 @@ Bot=Client(
     bot_token = os.environ.get("BOT_TOKEN")
    )
 
+START_PIC = os.environ.get("START_PIC")
+
 chatQueue = []
 
 stopProcess = False
@@ -245,12 +247,12 @@ async def bots(client, message):
 async def start(client, message):
     text = "Hey {},\nᴍʏ ɴᴀᴍᴇ ɪꜱ **ᴍᴇɴᴛɪᴏɴ ᴀʟʟ**. ɪ'ᴍ ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ ɢᴇᴛ ᴇᴠᴇʀʏᴏɴᴇ'ꜱ ᴀᴛᴛᴇɴᴛɪᴏɴ ʙʏ ᴍᴇɴᴛɪᴏɴɪɴɢ ᴀʟʟ ᴍᴇᴍʙᴇʀꜱ ɪɴ ʏᴏᴜʀ ᴄʜᴀᴛ.\n\nɪ ʜᴀᴠᴇ ꜱᴏᴍᴇ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ᴄᴏᴏʟ ꜰᴇᴀᴛᴜʀᴇꜱ ᴀɴᴅ ᴀʟꜱᴏ ɪ ᴄᴀɴ ᴡᴏʀᴋ ɪɴ ᴄʜᴀɴɴᴇʟꜱ.\n\nᴅᴏɴ'ᴛ ꜰᴏʀɢᴇᴛ ᴛᴏ ᴊᴏɪɴ ᴍʏ [ᴄʜᴀɴɴᴇʟ](https://telegram.me/ps_updates) ᴛᴏ ʀᴇᴄɪᴇᴠᴇ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴏɴ ᴀʟʟ ᴛʜᴇ ʟᴀᴛᴇꜱᴛ ᴜᴘᴅᴀᴛᴇꜱ.\n\nᴜꜱᴇ /help ᴛᴏ ꜰɪɴᴅ ᴏᴜᴛ ᴍʏ ᴄᴏᴍᴍᴀɴᴅꜱ ᴀɴᴅ ᴛʜᴇ ᴜꜱᴇ ᴏꜰ ᴛʜᴇᴍ."
     user = message.from_user
-    await db.add_user(client, message)                
+    #await db.add_user(client, message)                
     button = InlineKeyboardMarkup([[
         InlineKeyboardButton("🗯 Updates Channel", url='https://t.me/TGBotsCode')
     ]])
-    if Config.START_PIC:
-        await message.reply_photo(Config.START_PIC, caption=text.format(user.mention), reply_markup=button)       
+    if START_PIC:
+        await message.reply_photo(START_PIC, caption=text.format(user.mention), reply_markup=button)       
     else:
         await message.reply_text(text=text.format(user.mention), reply_markup=button, disable_web_page_preview=True)  
 
